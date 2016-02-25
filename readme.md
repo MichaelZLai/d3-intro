@@ -48,11 +48,11 @@ d3.selectAll("p").style("color", function() {
 
 ## You do: D3 experiments in the console:
 
-http://ga-dc.github.io/d3-console/
+http://ga-wdi-exercises.github.io/d3-console/
 
 ## We do: Let's make a bar chart
 
-http://github.com/ga-dc/d3-bar-chart/
+http://github.com/ga-wdi-exercises/d3-bar-chart/
 
 1. Remove the hardcoded HTML
 2. Select the chart element and save it to a variable
