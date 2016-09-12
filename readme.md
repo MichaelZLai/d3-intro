@@ -124,7 +124,7 @@ The scaling functions provided by d3 map an input domain to an output range.
 ```js
 var linearScale = d3.scale.linear()
                     .domain([0,42])
-			              .range([0,100])
+                    .range([0,100])
 ```
 
 This allows us to now use `linearScale` as a function. Whatever value we pass into this function will get converted to a different number based on the domain and range passed in.
@@ -144,7 +144,7 @@ For this particular data visualization, we used linear scales max domain to be 4
 ```js
 var linearScale = d3.scale.linear()
                     .domain([0,42])
-			              .range([0,100])
+                    .range([0,100])
 
 var data = [4, 10, 15, 16, 23, 42];
 d3.select(".chart")
@@ -166,7 +166,7 @@ and if you don’t know the max of a data set, use d3's `max` method:
 var max = d3.max(data)
 var linearScale = d3.scale.linear()
                     .domain([0,max])
-			              .range([0,100])
+                    .range([0,100])
 ```
 
 ## Something Cool ...
