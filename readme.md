@@ -69,7 +69,7 @@ What's going on in the above example?
 
 <details>
 
-  <summary><strong>Hey, we can write this in jQuery! What would that look like?</strong></summary>
+  <summary><strong>Hey, we can write this using jQuery! What would that look like?</strong></summary>
 
   ```js
   var data = [13, 42, 7, 33]
@@ -212,12 +212,8 @@ d3.select(".chart")
   .data(data)
   .enter()
   .append("div")
-  .style("width", function(d){
-    return d * 10 + "px"
-  })
-  .text(function(d){
-    return d;
-  })
+  .style("width", d => d * 10 + "px")
+  .text(d => d)
 ```
 
 > The **`.style`** method takes two arguments: (1) a CSS property and (2) a callback. The callback takes a single argument that represents each item in our dataset. The return value of the callback will be whatever you want to set the CSS property of the div in question to. So in this case, `return` should be followed by whatever we want each div's width to be.
@@ -228,41 +224,9 @@ d3.select(".chart")
 
 ## We Do: Improving the Bar Chart (10 minutes)
 
-Our bar chart works, but the bar widths are hard-coded to pixel values. Instead, it'd be nice if those widths were defined as percentages that correspond to some data domain.
-
-<!-- AM: Elaborate on what we mean by "data domain" here. -->
-
-### SVG
-
-* "scalable vector graphics"
-* render nicely no matter what the screen, resolution, zoom level is
-  * confirm: defined by the path the image takes; programmaticaly manipulated shapes; key word: scalable
-* defined in markup
-* xml-based (i.e., can be self-closing)
-* some pre-defined tags besides svg: rect, circle, ellipse, line, text, path
-  * `<rect x="0" y="0" width="500" height="50"/>` where x and y are upper-left coordinates
-  * `<circle cx="250" cy="25" r="25"/>` where cx and cy are center coordinates
-  * `<line x1="0" y1="0" x2="500" y2="50" stroke="black"/>`
-* pixel-based coordinates
-* styling
-  * can apply through attributes or stylesheet
-    * need to use same properties when in stylesheet
-  * fill - background color, any color value
-  * stroke - border, color
-  * stroke-width - border-width, numerical value (probs px)
-  * opacity
-* two-dimensional
-  * no concept of z-index to layer shapes
-  * layering determined by order in which elements are defined
-  * make sure to create important things like graph axes first
-* D3 is great for making svg elements dynamically
-
-
-<!-- AM: Why are we using SVG? -->
+Our chart works, but the bar widths are hard-coded to pixel values. Instead, it'd be nice if those widths were defined as percentages that correspond to the chart's domain. We can accomplish this using **scaling**.
 
 ### Scaling
-
-That scaling comes in handy when we would like our data to dynamically fit into the domain constraints of our graph.
 
 For this example, we are going to display our data according to a **linear scale**.
 * The domain of our graph will be all numbers between and including the min and max values in our dataset
@@ -297,7 +261,8 @@ var linearScale = d3.scale.linear()
                           .domain([0,42])
                           .range([0,100])
 
-var data = [4, 10, 15, 16, 23, 42];
+var data = [4, 10, 15, 16, 23, 42]
+
 d3.select(".chart")
   .selectAll("div")
   .data(data)
@@ -307,7 +272,7 @@ d3.select(".chart")
     return linearScale(d) + "%"   // We call linearScale, pass in data and append "%" to its return value
   })
   .text(function(d){
-    return d;
+    return d
   })
 ```
 
@@ -327,12 +292,10 @@ Instead of the existing `.style()` try this...
 ```js
 .style("width", "0px")
 .transition()
-  .delay(function(d, i) {return i * 1000})    // Play around with this!
+  .delay((d, i) => i * 100)
   .duration(1000)
-.style("width", function(d){
-    return linearScale(d) + "%"
-  })
-.style("padding-right", "3px")              // We can move styles from the stylesheet to D3 if we want
+.style("width", d => linearScale(d) + "%")
+.style("padding-right", "3px")
 ```
 
 We're barely scratching the surface of D3 here, if you're interested check out the API docs. There are some really cool things you can do with D3.
@@ -341,7 +304,7 @@ We're barely scratching the surface of D3 here, if you're interested check out t
 
 ## You Do: More Fun with Data Binding
 
-(Follow Square’s tutorial on D3 and data binding)[https://square.github.io/intro-to-d3/data-binding/].
+[Follow Square’s tutorial on D3 and data binding](https://square.github.io/intro-to-d3/data-binding/).
 
 #### Bonus
 
