@@ -4,7 +4,7 @@
 
 ## Learning Objectives
 
-- CRUD the DOM with D3
+- Manipulate the DOM using D3
 - Bind data to DOM elements
 - Scale data to fit the viewport
 - Use D3 helper methods like `min` and `max`
@@ -22,13 +22,12 @@ D3 stands for Data-Driven Documents. The word "document" in D3 refers to the DOM
 
 D3 doesn't come with any prebuilt visualizations. D3 aims to be low-level and flexible. There are many excellent charting libraries out there, several of them built with D3. If your goal is to render a few standard charts as quickly as possible, you may want to consider using a library instead of writing D3 code by hand. Check out [highcartJS](http://www.highcharts.com/), [chartJS](http://www.chartjs.org/) or [dygraphs](http://dygraphs.com/).  
 
-
 ### The Possibilities Are Endless
 
-- http://www.jasondavies.com/animated-bezier/
-- http://bl.ocks.org/mbostock/1136236
-- http://animateddata.co.uk/lab/d3-tree/
-- http://d3tetris.herokuapp.com/
+* http://www.jasondavies.com/animated-bezier/
+* http://bl.ocks.org/mbostock/1136236
+* http://animateddata.co.uk/lab/d3-tree/
+* http://d3tetris.herokuapp.com/
 
 > D3 allows you to bind arbitrary data to  the DOM and then apply data-driven transformations to the document. For example, you can use D3 to generate an HTML table from an array of numbers. Or, use the same data to create an interactive SVG bar chart with smooth transitions.
 
@@ -60,6 +59,7 @@ It can help to think of D3 as jQuery for data visualization. Consider this examp
   </script>
 </body>
 ```
+
 > **hsl** stands for "hue saturation lightness" and is an alternate way of defining a color in CSS. More info [here](http://www.w3schools.com/colors/colors_hsl.asp).
 
 What's going on in the above example?
@@ -92,7 +92,7 @@ All you need to do is link to a CDN and you're good to go!
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.js" charset="utf-8"></script>
 ```
 
-## We Do: A Bar Chart
+## We Do: A Bar Chart (10 minutes)
 
 Here's how we would go about creating a bar chart using just HTML and CSS. The data is hard-coded...
 
@@ -226,7 +226,7 @@ d3.select(".chart")
 
 <!-- AM: Add a You Do here where they do something similar with a different type of chart? -->
 
-## We Do: Improving the Bar Chart
+## We Do: Improving the Bar Chart (10 minutes)
 
 Our bar chart works, but the bar widths are hard-coded to pixel values. Instead, it'd be nice if those widths were defined as percentages that correspond to some data domain.
 
@@ -320,7 +320,7 @@ var linearScale = d3.scale.linear()
                     .range([0,100])
 ```
 
-### More Styling with D3
+### More Styling with D3 (5 minutes)
 
 Instead of the existing `.style()` try this...
 
@@ -329,17 +329,19 @@ Instead of the existing `.style()` try this...
 .transition()
   .delay(function(d, i) {return i * 1000})    // Play around with this!
   .duration(1000)
-  .style("width", function(d){
+.style("width", function(d){
     return linearScale(d) + "%"
   })
-  .style("padding-right", "3px")              // We can move styles from the stylesheet to D3 if we want
+.style("padding-right", "3px")              // We can move styles from the stylesheet to D3 if we want
 ```
 
 We're barely scratching the surface of D3 here, if you're interested check out the API docs. There are some really cool things you can do with D3.
 
+<!-- AM: Any other cool things we can do here? -->
+
 ## You Do: More Fun with Data Binding
 
-(Follow Square’s tutorial on d3 and data binding)[https://square.github.io/intro-to-d3/data-binding/].
+(Follow Square’s tutorial on D3 and data binding)[https://square.github.io/intro-to-d3/data-binding/].
 
 #### Bonus
 
