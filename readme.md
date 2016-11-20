@@ -80,7 +80,7 @@ What's going on in the above example?
   })
   ```
 
-<details>
+</details>
 
 You could make the argument for one over the other. D3, however, supports way more functionality than jQuery does when it comes to data visualization. Check out the [docs](https://github.com/d3/d3/blob/master/API.md).
 
