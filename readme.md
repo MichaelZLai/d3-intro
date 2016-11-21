@@ -129,7 +129,7 @@ Here's how we would go about creating a bar chart using just HTML and CSS. The d
 </html>
 ```
 
-### Refactor with D3
+### Refactor With D3
 
 #### Remove the hardcoded HTML
 
@@ -196,8 +196,6 @@ d3.select(".chart")
 
 > **tl;dr**: this is where we're **binding** the data to the DOM.
 
-<!-- AM: Does order matter here? Does enter have to come after the selects and data? -->
-
 #### Populate chart
 
 Now we need to tell D3 how we want to represent our data in the DOM. In this case we want to generate some HTML that looks similar to the code we had at the start. Here are the steps we need to take...
@@ -216,11 +214,70 @@ d3.select(".chart")
   .text(d => d)
 ```
 
-> The **`.style`** method takes two arguments: (1) a CSS property and (2) a callback. The callback takes a single argument that represents each item in our dataset. The return value of the callback will be whatever you want to set the CSS property of the div in question to. So in this case, `return` should be followed by whatever we want each div's width to be.
->
-> The **`.text`** method takes on argument: a callback. Like the `.style` callback, it takes one argument representing each item in our dataset. The method should return whatever you want each div's text content to be.
+The **`.style`** method takes two arguments: (1) a CSS property and (2) a callback.
+* The callback takes a single argument that represents each item in our dataset
+* The return value of the callback will be whatever you want to set the CSS property of the div in question to.
 
-<!-- AM: Add a You Do here where they do something similar with a different type of chart? -->
+The **`.text`** method takes one argument: a callback.
+* Like the `.style` callback, it takes one argument representing each item in our dataset. The method should return whatever you want each div's text content to be.
+
+> Order does matter when it comes to chaining D3 methods. For example, if we had called `.style` directly after `.select(".chart")`, it would have modified the width of the entire chart -- not the bars.
+
+## You Do: Vertical Bar Chart (15 minutes)
+
+Create a vertical bar chart that displays the number of students in different GA classes. [It should end up looking something like this.](http://i.imgur.com/RBFtHEM.png)
+
+You must use this exact dataset...
+
+```js
+let data = [
+  { class: "Web Development", numStudents: 23 },
+  { class: "User Experience Design", numStudents: 30 },
+  { class: "Data Science", numStudents: 15 },
+  { class: "Mobile Development", numStudents: 8 },
+  { class: "Product Managment", numStudents: 12 }
+]
+```
+
+Some things to consider...
+* **Styling**: how might you need to update this so that the bar chart properly renders?
+* **Data**: our initial dataset is structured differently than the in-class example
+
+#### Bonus
+
+* Add axes / labels to the chart
+* Make each column a different color
+* Create a key/legend indicating which color maps to which GA class
+
+#### Solution
+
+<details>
+  <summary><strong>Click to reveal...</strong></summary>
+
+  ```js
+  let data = [
+    { class: "Web Development", numStudents: 23 },
+    { class: "User Experience Design", numStudents: 30 },
+    { class: "Data Science", numStudents: 15 },
+    { class: "Mobile Development", numStudents: 8 },
+    { class: "Product Managment", numStudents: 12 }
+  ]
+
+  d3.select(".chart")
+    .selectAll("div")
+    .data(data)
+    .enter()
+    .append("div")
+    .style("height", d => d.numStudents * 10 + "px")
+    .style("background-color", d => {
+      return `rgb(${Math.floor(Math.random() * 256)},
+                  ${Math.floor(Math.random() * 256)},
+                  ${Math.floor(Math.random() * 256)})`
+    })
+    .text(d => d.class)
+  ```
+
+</details>
 
 ## We Do: Improving the Bar Chart (10 minutes)
 
@@ -231,8 +288,6 @@ Our chart works, but the bar widths are hard-coded to pixel values. Instead, it'
 For this example, we are going to display our data according to a **linear scale**.
 * The domain of our graph will be all numbers between and including the min and max values in our dataset
 * The range will be from 0 to 100, meaning that the lowest possible data value will be represented as 0% in our graph, the highest 100%
-
-<!-- AM: Rephrase this ^^^ -->
 
 ```js
 var linearScale = d3.scale.linear()
@@ -258,8 +313,8 @@ Let's use this scale to replace the code that currently generates pixel widths w
 
 ```js
 var linearScale = d3.scale.linear()
-                          .domain([0,42])
-                          .range([0,100])
+                          .domain([0, 42])
+                          .range([0, 100])
 
 var data = [4, 10, 15, 16, 23, 42]
 
@@ -281,8 +336,8 @@ We may not always know what the max value of a dataset might be. In that case, y
 ```js
 var max = d3.max(data)
 var linearScale = d3.scale.linear()
-                    .domain([0,max])
-                    .range([0,100])
+                    .domain([0, max])
+                    .range([0, 100])
 ```
 
 ### More Styling with D3 (5 minutes)
@@ -300,12 +355,53 @@ Instead of the existing `.style()` try this...
 
 We're barely scratching the surface of D3 here, if you're interested check out the API docs. There are some really cool things you can do with D3.
 
-<!-- AM: Any other cool things we can do here? -->
+## You Do: Update Vertical Bar Chart (15 minutes)
 
-## You Do: More Fun with Data Binding
+Update the chart from the earlier exercise so that...
+* Each bar's height is calculated a linear scale
+* Each bar is rendered using an animation upon page load
 
-[Follow Square’s tutorial on D3 and data binding](https://square.github.io/intro-to-d3/data-binding/).
+> Because of this particular dataset, we'll have to use certain methods differently than in the in-class exercise. [First step to figuring that out is looking through the documentation.](https://github.com/d3/d3/blob/master/API.md)
 
 #### Bonus
 
-Add labels to your final interactive data visualization.
+If you have not already done the bonuses for the first exercise, try those now. If you have already completed those, here are some more...
+
+#### Solution
+
+<details>
+  <summary><strong>Click to reveal...</strong></summary>
+
+  ```js
+  let data = [
+    { class: "Web Development", numStudents: 23 },
+    { class: "User Experience Design", numStudents: 30 },
+    { class: "Data Science", numStudents: 15 },
+    { class: "Mobile Development", numStudents: 8 },
+    { class: "Product Managment", numStudents: 12 }
+  ]
+
+  let yMax = d3.max(data, d => d.numStudents)
+  let y = d3.scale.linear()
+                  .domain([0, yMax])
+                  .range([0, 100])
+
+  d3.select(".chart")
+    .selectAll("div")
+    .data(data)
+    .enter()
+    .append("div")
+    .style("background-color", d => {
+      return `rgb(${Math.floor(Math.random() * 256)},
+                  ${Math.floor(Math.random() * 256)},
+                  ${Math.floor(Math.random() * 256)})`
+    })
+    .style("height", 0)
+    .transition()
+      .delay((d, i) => i * 100)
+      .duration(1000)
+    .style("height", d => y(d.numStudents) + "%")
+    .text(d => d.class)
+  ```
+
+</details>
