@@ -32,8 +32,6 @@ Before we go over D3 code as a class, you're going to dive in and play with some
 
 ## Quick Demo (5 minutes / 0:15)
 
-<!-- AM: Why are we using hsl in this example? Did it come from some other source? -->
-
 It can help to think of D3 as jQuery for data visualization. Consider this example...
 
 ```html
@@ -356,11 +354,15 @@ Update the chart from the earlier exercise so that...
 * Each bar's height is calculated a linear scale
 * Each bar is rendered using an animation upon page load
 
+<!-- AM: What else should they do here? Something that requires self-research -->
+
 > Because of this particular dataset, we'll have to use certain methods differently than in the in-class exercise. [First step to figuring that out is looking through the documentation.](https://github.com/d3/d3/blob/master/API.md)
 
 #### Bonus
 
 If you have not already done the bonuses for the first exercise, try those now. If you have already completed those, here are some more...
+
+<!-- AM: Need more bonuses -->
 
 #### Solution
 
