@@ -1,6 +1,4 @@
-# D3.js
-
-[screencast](https://vimeo.com/133149838)
+# D3
 
 ## Learning Objectives
 
