@@ -353,15 +353,11 @@ Update the chart from the earlier exercise so that...
 * Each bar's height is calculated a linear scale
 * Each bar is rendered using an animation upon page load
 
-<!-- AM: What else should they do here? Something that requires self-research -->
-
 > Because of this particular dataset, we'll have to use certain methods differently than in the in-class exercise. [First step to figuring that out is looking through the documentation.](https://github.com/d3/d3/blob/master/API.md)
 
 #### Bonus
 
-If you have not already done the bonuses for the first exercise, try those now. If you have already completed those, here are some more...
-
-<!-- AM: Need more bonuses -->
+If you have not already done the bonuses for the first exercise, try those now.
 
 #### Solution
 
