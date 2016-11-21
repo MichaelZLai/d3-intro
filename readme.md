@@ -20,7 +20,6 @@ D3 doesn't come with any prebuilt visualizations. D3 aims to be low-level and fl
 ### The Possibilities Are Endless
 
 * http://www.jasondavies.com/animated-bezier/
-* http://bl.ocks.org/mbostock/1136236
 * http://animateddata.co.uk/lab/d3-tree/
 * http://d3tetris.herokuapp.com/
 
