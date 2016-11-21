@@ -9,9 +9,6 @@
 - Scale data to fit the viewport
 - Use D3 helper methods like `min` and `max`
 
-http://d3js.org/
-[Documentation](https://github.com/d3/d3/blob/master/API.md)
-
 ## Framing (5 minutes / 0:05)
 
 ### What Is D3?
@@ -405,3 +402,13 @@ If you have not already done the bonuses for the first exercise, try those now. 
   ```
 
 </details>
+
+## Closing / Questions
+
+-------
+
+## [Screencast](https://vimeo.com/133149838)
+
+## Resources
+
+* [D3 Documentation](https://github.com/d3/d3/blob/master/API.md)
