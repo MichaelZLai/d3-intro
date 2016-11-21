@@ -238,9 +238,9 @@ Some things to consider...
 
 #### Bonus
 
-* Add axes / labels to the chart
-* Make each column a different color
-* Create a key/legend indicating which color maps to which GA class
+* [Add axes / labels to the chart](http://hdnrnzk.me/2012/07/04/creating-a-bar-graph-using-d3js/)
+* Make each column a different color. Try generating them randomly!
+* [Create a key/legend indicating which color maps to which GA class](http://zeroviscosity.com/d3-js-step-by-step/step-3-adding-a-legend)
 
 #### Solution
 
