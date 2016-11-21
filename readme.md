@@ -403,6 +403,12 @@ If you have not already done the bonuses for the first exercise, try those now. 
 
 </details>
 
+## Some Other Things To Try
+
+* More charts: [line](https://bl.ocks.org/mbostock/3883245), [pie](http://zeroviscosity.com/d3-js-step-by-step/step-1-a-basic-pie-chart), [scatterplot](http://bl.ocks.org/weiglemc/6185069)
+* [SVGs and D3](https://www.dashingd3js.com/lessons/creating-svg-elements-from-data)
+* [Maps and D3](https://maptimeboston.github.io/d3-maptime/)
+
 ## Closing / Questions
 
 -------
