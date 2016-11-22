@@ -10,6 +10,7 @@
         border-bottom: 1px solid gray;
         border-left: 1px solid gray;
         width: 100%;
+        height: 600px;
       }
       .chart div {
         font: 10px sans-serif;
@@ -33,15 +34,24 @@
           { class: "Product Managment", numStudents: 12 }
         ]
 
+        let maxheight = d3.max(data, d => d.numStudents)
+        let y = d3.scale.linear()
+                        .domain([0,maxheight])
+                        .range([0,100])
+
         d3.select(".chart")
           .selectAll() // Select all divs that currently and have yet to be placed in side of the chart div
           .data(data) //define data select
           .enter()
           .append("div")
-          .style("height", d => d.numStudents * 10 + "px")
           .style("background-color", d => `rgb(${Math.floor(Math.random() * 255)},
                                                ${Math.floor(Math.random() * 255)},
                                                ${Math.floor(Math.random() * 255)})`) //math.floor makes it a whole number... math.random is a random decimal between 0 and 1
+          .style("height", "0px")
+          .transition()
+            .delay((d,i) => i*100)
+            .duration(1000)
+          .style("height", d => y(d.numStudents) + "%")
           .text( d => d.class)
     </script>
   </body>
