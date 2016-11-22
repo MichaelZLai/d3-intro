@@ -332,7 +332,7 @@ var linearScale = d3.scale.linear()
                     .range([0, 100])
 ```
 
-### More Styling with D3 (5 minutes)
+### More Styling with D3
 
 Instead of the existing `.style()` try this...
 
@@ -358,6 +358,8 @@ Update the chart from the earlier exercise so that...
 #### Bonus
 
 If you have not already done the bonuses for the first exercise, try those now.
+
+If you've already completed those, try adding some interactivity to your graph. When the user hovers over a bar, a small window should open next to the cursor that displays the class name and number of students. [This might help...](https://www.dashingd3js.com/lessons/d3-and-dom-events)
 
 #### Solution
 
