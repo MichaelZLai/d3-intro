@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>&hearts; D3</title>
+    <style>
+      .chart{
+        display:flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        border-bottom: 1px solid gray;
+        border-left: 1px solid gray;
+        width: 100%;
+      }
+      .chart div {
+        font: 10px sans-serif;
+        background-color: #F42A41;
+        text-align: right;
+        padding: 3px;
+        margin: 1px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chart"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+    <script>
+        let data = [
+          { class: "Web Development", numStudents: 23 },
+          { class: "User Experience Design", numStudents: 30 },
+          { class: "Data Science", numStudents: 15 },
+          { class: "Mobile Development", numStudents: 8 },
+          { class: "Product Managment", numStudents: 12 }
+        ]
+
+        d3.select(".chart")
+          .selectAll() // Select all divs that currently and have yet to be placed in side of the chart div
+          .data(data) //define data select
+          .enter()
+          .append("div")
+          .style("height", d => d.numStudents * 10 + "px")
+          .style("background-color", d => `rgb(${Math.floor(Math.random() * 255)},
+                                               ${Math.floor(Math.random() * 255)},
+                                               ${Math.floor(Math.random() * 255)})`) //math.floor makes it a whole number... math.random is a random decimal between 0 and 1
+          .text( d => d.class)
+    </script>
+  </body>
+</html>
